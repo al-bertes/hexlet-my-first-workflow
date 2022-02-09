@@ -1,16 +1,29 @@
 name: hello-world
-# on – определяет события, которые запускают воркфлоу
-on: push
+
+
+name: CI
+
+on:
+
+  push:
+    branches: [ main ]
+  
+
+
 jobs:
-  # build – произвольно выбранное имя задания
-  # их может быть больше одного
+
   build:
-    # операционная система для работы воркфлоу
+
     runs-on: ubuntu-latest
-    steps: # список шагов, которые надо выполнить
-      # экшен, выполняет какую-то задачу
-      # checkout – клонирует репозиторий
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # run – произвольная bash-команда
-      # ls -la выведет содержимое текущего репозитория
-      - run: make say-hello
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: make say-hello
+
+
+     
